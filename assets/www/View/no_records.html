@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+	<head> 
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+  		<link rel="stylesheet" type="text/css" href="../webroot/css/style.css">
+  		<link rel="stylesheet" type="text/css" href="../webroot/css/bootstrap.css">
+  		<link rel="stylesheet" type="text/css" href="../webroot/css/topcoat-mobile-dark.css">
+  		<link rel="stylesheet" type="text/css" href="../webroot/css/icomatic/icomatic.css">
+	</head>
+
+	<body class="container">    
+		<div class="row">
+			<div class="nav-tab-bar fixed">
+				<div id="birth_controls_link" class="col-xs-4 nav-tab-bar-item nav-tab-bar-item-bordered">
+					<div class="row">
+						<span class='icomatic' style='font-size: 22px;'>alert</span>
+					</div>
+					<span class="nav-tab-bar-label">Birth Controls</span> 
+				</div>
+
+				<div id="fertility_link" class="col-xs-4 nav-tab-bar-item nav-tab-bar-item-bordered active">
+					<div class="row">
+						<span class='icomatic' style='font-size: 22px;'>like</span>
+					</div>
+					<span class="nav-tab-bar-label">Fertility</span>
+				</div>
+
+				<div id="about_link" class="col-xs-4 nav-tab-bar-item">
+					<div class="row">
+						<span class='icomatic' style='font-size: 22px;'>group</span>
+					</div>
+					<span class="nav-tab-bar-label">About</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="nav-tab-bar-spacer"></div>  
+ 		
+ 		<div id="slider" class="swipe">
+ 			<div class='swipe-wrap'>
+ 				<div class="container">
+		 			<center style="margin-top: 30px;"><h4>When did your menstrual period started?</h4></center>
+		 			<div class="row form-group" style="margin-top: 20px;">
+		 				<center><div class="col-xs-6" style="margin: 0 auto; float: none;">
+		 					<select class="form-control" id="input_month">
+		 						<option value="0">January</option>
+		 						<option value="1">Febuary</option>
+		 						<option value="2">March</option>
+		 						<option value="3">April</option>
+		 						<option value="4">May</option>
+		 						<option value="5">Jun</option>
+		 						<option value="6">July</option>
+		 						<option value="7">August</option>
+		 						<option value="8">September</option>
+		 						<option value="9">October</option>
+		 						<option value="10">November</option>
+		 						<option value="11">December</option>
+		 					</select>
+		 				</div></center>
+		 			</div>
+
+		 			<div class="row form-group">
+		 				<center><div class="col-xs-6" style="margin: 0 auto; float: none;">
+		 					<select class="form-control" id="input_day">
+		 						<option value="1"> 01 </option> 
+		 						<option value="2"> 02 </option> 
+		 						<option value="3"> 03 </option> 
+		 						<option value="4"> 04 </option> 
+		 						<option value="5"> 05 </option> 
+		 						<option value="6"> 06 </option> 
+		 						<option value="7"> 07 </option> 
+		 						<option value="8"> 08 </option> 
+		 						<option value="9"> 09 </option> 
+		 						<option value="10"> 10 </option> 
+		 						<option value="11"> 11 </option> 
+		 						<option value="12"> 12 </option> 
+		 						<option value="13"> 13 </option> 
+		 						<option value="14"> 14 </option> 
+		 						<option value="15"> 15 </option> 
+		 						<option value="16"> 16 </option> 
+		 						<option value="17"> 17 </option> 
+		 						<option value="18"> 18 </option> 
+		 						<option value="19"> 19 </option> 
+		 						<option value="20"> 20 </option> 
+		 						<option value="21"> 21 </option> 
+		 						<option value="22"> 22 </option> 
+		 						<option value="23"> 23 </option> 
+		 						<option value="24"> 24 </option> 
+		 						<option value="25"> 25 </option> 
+		 						<option value="26"> 26 </option> 
+		 						<option value="27"> 27 </option> 
+		 						<option value="28"> 28 </option> 
+		 						<option value="29"> 29 </option> 
+		 						<option value="30"> 30 </option> 
+		 						<option value="31"> 31 </option> 
+		 					</select>
+		 				</div></center>
+		 			</div>
+
+
+		 			<div class="row form-group">
+		 				<center><div class="col-xs-6" style="float: none;">
+		 					<select class="form-control" id="input_year"> 
+		 					</select>
+		 				</div></center>
+		 			</div> 
+		 		</div>
+
+ 				<div class="container">
+		 			<center style="margin-top: 30px;"><h4>Minimum cycle length</h4></center>
+		 			<div class="row form-group" style="margin-top: 20px;">
+		 				<div class="col-xs-12"><input type="number" id="min_cycle" class="form-control" /></div>
+		 			</div>
+
+		 			<center style="margin-top: 30px;"><h4>Maximum cycle length</h4></center>
+		 			<div class="row form-group" style="margin-top: 20px;">
+		 				<div class="col-xs-12"><input type="number" id="max_cycle" class="form-control" /></div>
+		 			</div>
+		 		</div>
+
+ 				<div class="container">
+		 			<center style="margin-top: 30px;"><h4>Minimum period length</h4></center>
+		 			<div class="row form-group" style="margin-top: 20px;">
+		 				<div class="col-xs-12"><input type="number" id="min_period" class="form-control" /></div>
+		 			</div>
+
+		 			<center style="margin-top: 30px;"><h4>Maximum period length</h4></center>
+		 			<div class="row form-group" style="margin-top: 20px;">
+		 				<div class="col-xs-12"><input type="number" id="max_period" class="form-control" /></div>
+		 			</div>
+		 		</div>
+ 			</div>
+ 		</div> 
+		
+
+		<center><div style="margin-top: 50px; width: 222px;">
+			<div id="back_button" style="margin-right: 30px; float: left; width: 80px; padding: 10px; border: 1px solid #888; background: #3498db; color: #fff; border-radius: 2px;"><span style="font-size: 16px;">Back</span></div>
+			<div id="next_button" style="margin-left: 30px; float: left; width: 80px; padding: 10px; border: 1px solid #888; background: #3498db; color: #fff; border-radius: 2px;"><span style="font-size: 16px;">Next</span></div>
+		</div></center>
+
+  		<script type="text/javascript" src="../webroot/js/jquery.js"></script>
+  		<script type="text/javascript" src="../webroot/js/swipe.js"></script>
+  		<script type="text/javascript" src="../cordova-2.1.0.js"></script>  
+  		<script type="text/javascript">  
+	  		var months = [
+				'Jan', 
+				'Feb', 
+				'Mar', 
+				'Apr', 
+				'May', 
+				'Jun', 
+				'Jul', 
+				'Aug', 
+				'Sep', 
+				'Oct', 
+				'Nov', 
+				'Dec', 
+			];
+			
+			var elem = document.getElementById('slider');
+			window.mySwipe = Swipe(elem, {
+				continuous: false,
+				// startSlide: 4,
+				// auto: 3000,
+				// continuous: true,
+				// disableScroll: true,
+				// stopPropagation: true,
+				// callback: function(index, element) {},
+				// transitionEnd: function(index, element) {}
+			});
+
+			document.addEventListener("deviceready", onDeviceReady, false);
+
+			// device APIs are available
+			function onDeviceReady() {   
+				//Bind events
+				$('#back_button').on('touchstart', function(){ 
+					if (mySwipe.getPos() == 0) { 
+					    history.go(-1);
+					    navigator.app.backHistory();   
+					} else {
+						mySwipe.prev();
+					}
+				}); 
+
+				$('#next_button').on('touchstart', function(){ 
+					if (mySwipe.getPos()+1 == mySwipe.getNumSlides()) {
+						var db = window.openDatabase("xBirth", "1.0", "xBirth", 200000);
+					    db.transaction(populateCycleDB, errorCB, successCB); 
+					} else {
+						mySwipe.next();
+					}
+				});
+
+				$('#birth_controls_link').on('touchstart', function(e){
+					window.location.replace('birth_controls.html');
+				}); 
+
+				var year = new Date().getFullYear(); 
+				for (var i=2014; i<=2019; i++) {
+					var option = '<option value="' + i + '"> ' + i + ' </option>';
+					$('#input_year').append(option);
+				} 
+
+
+				document.addEventListener("backbutton", onBackKeyDown, false);
+
+			}
+
+			function populateCycleDB(tx) { 
+				var date_now = new Date();
+				var month_now = date_now.getMonth()+1;
+				var cycle_start_date = new Date( parseInt($('#input_year').val()), parseInt($('#input_month').val()), parseInt($('#input_day').val()) ); 
+				var cycle_start_date_formatted = '';
+				var cycle_end_date_formatted = '';
+				var min_cycle = $('#min_cycle').val();
+				var max_cycle = $('#max_cycle').val();
+				var min_period = $('#min_period').val();
+				var max_period = $('#max_period').val();
+				var cycle_ave = (parseInt(min_cycle) + parseInt(max_cycle)) / 2;
+				var period_ave = (parseInt(min_period) + parseInt(max_period)) / 2;  
+
+				date_today = date_now.getFullYear() + '-' + month_now + '-' + date_now.getDate();
+				cycle_start_date_formatted = $('#input_year').val() + "-" + parseInt($('#input_month').val())+1 + "-" + $('#input_day').val();  
+ 
+				/*POPULATE CYCLE_INFO_PREDICTION TABLE*/
+				var monthStart = new Date(cycle_start_date.getFullYear(), cycle_start_date.getMonth(), 1);
+				var monthEnd = new Date(cycle_start_date.getFullYear(), cycle_start_date.getMonth()+1, 1);
+				var days_in_month = (monthEnd - monthStart) / (1000 * 60 * 60 * 24)   
+
+
+				var days_counter_this_month = (days_in_month - parseInt(cycle_start_date.getDate())) + 1;
+				//IF days_counter_this_month is less than the average cycle length,
+				if (days_counter_this_month < cycle_ave) { 
+					var days_left_for_nxt_month = cycle_ave - days_counter_this_month;
+					cycle_end_date_formatted = cycle_start_date.getFullYear() + '-' + parseInt(cycle_start_date.getMonth())+2 + '-' + days_left_for_nxt_month; 
+
+					tx.executeSql("INSERT INTO CYCLES_PREDICTION (id, title, start_date, end_date, date_created) VALUES (NULL, 'Cycle-1', '" + cycle_start_date_formatted + "', '" + cycle_end_date_formatted + "', '" + date_today + "');", [], populateCycleInfoDB, errorCB);  
+
+				} else { 
+					var y = cycle_start_date.getFullYear();
+					var m = parseInt(cycle_start_date.getMonth())+1;
+					var d = (parseInt(cycle_start_date.getDate()) + cycle_ave) - 1;
+					cycle_end_date_formatted = y + '-' + m + '-' + d;  
+
+					tx.executeSql("INSERT INTO CYCLES_PREDICTION (id, title, start_date, end_date, date_created) VALUES (NULL, 'Cycle-1', '" + cycle_start_date_formatted + "', '" + cycle_end_date_formatted + "', '" + date_today + "');", [], populateCycleInfoDB, errorCB); 
+				}  
+
+			}
+
+			function populateCycleInfoDB(tx, results) {
+				var cycle_id = results.insertId;
+
+				var date_now = new Date();
+				var month_now = date_now.getMonth()+1;
+				var cycle_start_date = new Date( parseInt($('#input_year').val()), parseInt($('#input_month').val()), parseInt($('#input_day').val()) ); 
+				var cycle_start_date_formatted = '';
+				var cycle_end_date_formatted = '';
+				var min_cycle = $('#min_cycle').val();
+				var max_cycle = $('#max_cycle').val();
+				var min_period = $('#min_period').val();
+				var max_period = $('#max_period').val();
+				var cycle_ave = (parseInt(min_cycle) + parseInt(max_cycle)) / 2;
+				var period_ave = (parseInt(min_period) + parseInt(max_period)) / 2;  
+
+				date_today = date_now.getFullYear() + '-' + month_now + '-' + date_now.getDate();
+				cycle_start_date_formatted = $('#input_year').val() + "-" + parseInt($('#input_month').val())+1 + "-" + $('#input_day').val();  
+ 
+
+				/*POPULATE CYCLE_INFO_PREDICTION TABLE*/
+				var monthStart = new Date(cycle_start_date.getFullYear(), cycle_start_date.getMonth(), 1);
+				var monthEnd = new Date(cycle_start_date.getFullYear(), cycle_start_date.getMonth()+1, 1);
+				var days_in_month = (monthEnd - monthStart) / (1000 * 60 * 60 * 24)  
+				var cycle_day_counter = 0;
+
+
+				var days_counter_this_month = (days_in_month - parseInt(cycle_start_date.getDate())) + 1;
+				//IF days_counter_this_month is less than the average cycle length,
+				if (days_counter_this_month < cycle_ave) {   
+					var sql = "INSERT INTO CYCLE_INFO_PREDICTION ";
+					for (var i=cycle_start_date.getDate(); i<=days_in_month; i++) {
+						cycle_day_counter++;
+
+						var mucus = "None";
+						var mens = "None";
+						var temp = 0;
+						var is_fertile = "NO";
+						var is_mens = "NO";
+						var cycle_date = new Date(cycle_start_date.getFullYear(), cycle_start_date.getMonth(), i);
+						var cycle_date_unix = cycle_date.getTime();
+						var month = cycle_date.getMonth()+1;
+						cycle_date = cycle_date.getFullYear() + '-' + month + '-' + cycle_date.getDate();
+
+						if (cycle_day_counter >= 8 && cycle_day_counter <= 19) {
+							is_fertile = "YES";
+						}
+						if (cycle_day_counter >= 1 && cycle_day_counter <= period_ave) {
+							is_mens = "YES";
+
+							if (cycle_day_counter == 4) {
+								mens = "Light";
+							} else {
+								mens = "Heavy";
+							}
+						}
+
+						if (cycle_day_counter == 1) {
+							sql += "SELECT NULL AS id, "+cycle_id+" AS cycle_id, "+cycle_day_counter+" AS cycle_day, '"+mucus+"' AS mucus, '"+mens+"' AS mens, '"+temp+"' AS temperature, '"+is_fertile+"' AS is_fertile, '"+is_mens+"' AS is_mens, "+cycle_date_unix+" AS cycle_date_unix, '"+cycle_date+"' AS cycle_date ";
+						} else {
+							sql += "UNION SELECT NULL, "+cycle_id+", "+cycle_day_counter+", '"+mucus+"', '"+mens+"', '"+temp+"', '"+is_fertile+"', '"+is_mens+"', "+cycle_date_unix+", '"+cycle_date+"' ";
+						}
+					}
+					
+					var cycle_days_left = cycle_ave - cycle_day_counter;
+					if (cycle_days_left > 0) {
+						for (var i=1; i<=cycle_days_left; i++) {
+							cycle_day_counter++;
+
+							var mucus = "None";
+							var mens = "None";
+							var temp = 0;
+							var is_fertile = "NO";
+							var cycle_date = new Date(cycle_start_date.getFullYear(), cycle_start_date.getMonth()+1, i);
+							var cycle_date_unix = cycle_date.getTime();
+							var month = cycle_date.getMonth()+1;
+							cycle_date = cycle_date.getFullYear() + '-' + month + '-' + cycle_date.getDate();
+ 							
+ 							if (cycle_day_counter >= 8 && cycle_day_counter <= 19) {
+								is_fertile = "YES";
+							}
+
+							sql += "UNION ALL SELECT NULL, "+cycle_id+", "+cycle_day_counter+", '"+mucus+"', '"+mens+"', '"+temp+"', '"+is_fertile+"', '"+is_mens+"', "+cycle_date_unix+", '"+cycle_date+"'"; 
+
+						}
+					}
+
+					tx.executeSql(sql);
+
+				} else {    
+					var d = (parseInt(cycle_start_date.getDate()) + cycle_ave) - 1;
+
+					var sql = "INSERT INTO CYCLE_INFO_PREDICTION ";
+					for (var i=cycle_start_date.getDate(); i<=d; i++) {
+						cycle_day_counter++;
+
+						var mucus = "None";
+						var mens = "None";
+						var temp = 0;
+						var is_fertile = "NO";
+						var is_mens = "NO";
+						var cycle_date = new Date(cycle_start_date.getFullYear(), cycle_start_date.getMonth(), i);
+						var cycle_date_unix = cycle_date.getTime();
+						var month = cycle_date.getMonth()+1;
+						cycle_date = cycle_date.getFullYear() + '-' + month + '-' + cycle_date.getDate();
+
+						if (cycle_day_counter >= 8 && cycle_day_counter <= 19) {
+							is_fertile = "YES";
+						}
+
+						if (cycle_day_counter >= 1 && cycle_day_counter <= period_ave) {
+							is_mens = "YES";
+
+							if (cycle_day_counter == 4) {
+								mens = "Light";
+							} else {
+								mens = "Heavy";
+							}
+						}
+
+						if (cycle_day_counter == 1) {
+							sql += "SELECT NULL AS id, "+cycle_id+" AS cycle_id, "+cycle_day_counter+" AS cycle_day, '"+mucus+"' AS mucus, '"+mens+"' AS mens, '"+temp+"' AS temperature, '"+is_fertile+"' AS is_fertile, '"+is_mens+"' AS is_mens, "+cycle_date_unix+" AS cycle_date_unix, '"+cycle_date+"' AS cycle_date ";
+						} else {
+							sql += "UNION SELECT NULL, "+cycle_id+", "+cycle_day_counter+", '"+mucus+"', '"+mens+"', '"+temp+"', '"+is_fertile+"', '"+is_mens+"', "+cycle_date_unix+", '"+cycle_date+"' ";
+						}
+					}
+
+					tx.executeSql(sql);
+
+				} 
+			}
+
+			function successCB() {
+				window.location.replace('fertility.html');
+			} 
+
+			// Transaction error callback
+			function errorCB(err) {
+			    alert("Error processing SQL: "+err.code);
+			}
+
+			function onBackKeyDown() {  
+				if (mySwipe.getPos() == 0) { 
+				    history.go(-1);
+				    navigator.app.backHistory();   
+				} else {
+					mySwipe.prev();
+				}
+			}
+
+
+  		</script>
+	</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+	<head> 
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+  		<link rel="stylesheet" type="text/css" href="../webroot/css/style.css">
+  		<link rel="stylesheet" type="text/css" href="../webroot/css/bootstrap.css">
+  		<link rel="stylesheet" type="text/css" href="../webroot/css/topcoat-mobile-dark.css">
+  		<link rel="stylesheet" type="text/css" href="../webroot/css/icomatic/icomatic.css">
+	</head>
+
+	<body class="container">    
+		<div class="row">
+			<div class="nav-tab-bar fixed" style="height: 45px; color: #fff;"> 
+	 			<h4 class="home_button" style="margin: 0; padding: 12px 0; width: 85px;">
+	 				<span class="pull-left icomatic" style="font-size: 21px;">backlight</span> Fertiller
+	 			</h4>
+			</div>
+		</div>
+
+		<div class="nav-tab-bar-spacer" style="margin: 22px;"></div> 
+
+		<div class="aaa" id="aaa">   
+			<div class="content-header fixed" style="border-bottom: 1px solid #3498db; padding: 5px 0; background: #E8E6F0; top: 45px;"><div class="col-xs-12">
+				<div class="pull-left" style="padding-right: 10px;"> 
+					<img class="main_pic" style="border: 1px solid #888; padding: 3px; border-radius: 2px;" src="../webroot/img/bc_methods/" height="70px;" width="70px;">
+				</div>
+ 
+				<h4 style="margin: 5px 0 0 0;" class="name"><!--Male Condom--></h4><br/>
+				<span>Efficiency: <b><span class="efficiency"><!--98--></span>%</b></span> 
+			</div></div>
+ 
+
+			<div class="content-main" style="margin-top: 100px;">
+				<div class="row">
+					<h5 class="col-xs-12" style="margin: 10px 0;"><b>Description</b></h5>
+					<div class="col-xs-12 accordion description" style="white-space; nowrap; overflow: hidden; text-align: justify;" data-height="">   
+						<!--Description-->
+					</div>
+
+					<h5 class="col-xs-12" style="margin: 10px 0;"><b>Instruction</b></h5>
+					<div class="col-xs-12 accordion instruction" style="white-space; nowrap; overflow: hidden; text-align: justify;" data-height="">   
+						<!--Instruction-->
+					</div> 
+
+					<h5 class="col-xs-12" style="margin: 10px 0;"><b>Risks</b></h5>
+					<div class="col-xs-12 accordion risks" style="white-space; nowrap; overflow: hidden; text-align: justify;" data-height="">   
+						<!--Risks-->
+					</div>
+				</div>
+
+				<div class="row more_methods">
+					<h5 class="col-xs-12" style="margin: 10px 0;"><b>More Methods</b></h5>
+					<div class="col-xs-4">
+						<div class="" style="max-height: 100px; min-height: 100px; box-shadow: -1px 2px 3px #000; border: 1px solid transparent; background: #fff; border-radius: 2px;">
+							<center><img style="padding: 3px; border-radius: 2px;" src="../webroot/img/bc_methods/male_condom.png" height="70px;" width="70px;"></center>
+							<center><b>IUD</b></center>
+						</div>
+					</div> 
+
+					<div class="col-xs-4">
+						<div class="" style="max-height: 100px; min-height: 100px; box-shadow: -1px 2px 3px #000; border: 1px solid transparent; background: #fff; border-radius: 2px;">
+							<center><img style="padding: 3px; border-radius: 2px;" src="../webroot/img/bc_methods/male_condom.png" height="70px;" width="70px;"></center>
+							<center><b>Vasectomy</b></center>
+						</div>
+					</div> 
+
+					<div class="col-xs-4">
+						<div class="" style="max-height: 100px; min-height: 100px; box-shadow: -1px 2px 3px #000; border: 1px solid transparent; background: #fff; border-radius: 2px;">
+							<center><img style="padding: 3px; border-radius: 2px;" src="../webroot/img/bc_methods/male_condom.png" height="70px;" width="70px;"></center>
+							<center><b>Female Condom</b></center>
+						</div>
+					</div> 
+				</div>
+			</div>
+		</div>
+		
+		<div class="footer-spacer">&nbsp;</div>
+		<div class="footer fixed">   
+  			<div class="footer-label"> 
+				<div style="padding-top: 18px;"><div style="margin: 0 auto; width: 85px;">Re-electionists</div></div> 
+  			</div>
+		</div> 
+
+  		<script type="text/javascript" src="../webroot/js/jquery.js"></script>
+  		<script type="text/javascript" src="../cordova-2.1.0.js"></script>  
+  		<script type="text/javascript">
+			/*var single_method = window.localStorage.getItem('var_single_method');
+			var arr_tmp = single_method.split('_');
+			single_method = '';
+			for (var i=0; i<arr_tmp.length; i++) {
+				single_method += arr_tmp[i].charAt(0).toUpperCase() + arr_tmp[i].slice(1);
+				
+				if (i != arr_tmp.length-1) {
+					single_method += ' ';
+				}
+			} */
+
+			$('img.main_pic').attr('src', $('img.main_pic').attr('src') + window.localStorage.getItem('var_img'))
+	    	$('.name').html(window.localStorage.getItem('var_name'));
+	    	$('.efficiency').html(window.localStorage.getItem('var_efficiency'));
+	    	$('.description').html(window.localStorage.getItem('var_desc'));
+	    	$('.instruction').html(window.localStorage.getItem('var_ins'));
+	    	$('.risks').html(window.localStorage.getItem('var_risks'));
+
+			accordion_init();
+
+  			// Wait for device API libraries to load
+			document.addEventListener("deviceready", onDeviceReady, false);
+
+			// device APIs are available
+			function onDeviceReady() { 
+  				$('.home_button').on('touchstart', function(e){  
+					window.location.replace('birth_controls.html');
+				});   
+
+			    //var db = window.openDatabase("xBirth", "1.0", "xBirth", 200000);
+			    //db.transaction(queryMethodsDB, errorCB); 
+			    
+				document.addEventListener("backbutton", onBackKeyDown, false);
+  			}
+ 
+  			/*QUERY THE BC_METHODS DATABASE*/ 
+			function queryMethodsDB(tx) { 
+				var sql = "SELECT * FROM BC_METHODS WHERE name = '" + single_method + "'";
+				tx.executeSql(sql, [], queryMethodsDB_success);
+			}
+
+			function queryMethodsDB_success(tx, results) {  
+		    	$('.description').html(results.rows.item(0).description);
+		    	$('.instruction').html(results.rows.item(0).instruction);
+		    	$('.risks').html(results.rows.item(0).risks); 
+				db = null;
+
+  				accordion_init();
+			}
+
+  			// Transaction error callback
+			function errorCB(err) {
+			    alert("Error processing SQL: "+err.code);
+			}
+
+  			function accordion_init() {
+  				$('.accordion').each(function(index){
+  					var dom_height = $(this).height();  
+
+	  				if (dom_height > 100) {
+	  					$(this).attr('data-height', dom_height);
+	  					$(this).css('min-height', '90px');
+	  					$(this).css('max-height', '90px');
+
+	  					$(this).after('<div class="col-xs-12 toggle-button" style="border-bottom: 1px solid #888; padding: 3px 15px;"><div class="pull-right"><span class="icomatic" style="color: #333">arrowdown</span></div></div>');
+	  				} else {
+	  					$(this).css('border-bottom', '1px solid #888');
+	  				}
+				}); 
+ 
+				$('.toggle-button').each(function(index){
+					$(this).click(function(){ 
+						var stored_height = $(this).prev().attr('data-height'); 
+						var height = $(this).prev().height();
+
+						if (stored_height == height) { 
+							$(this).html('<div class="pull-right"><span class="icomatic" style="color: #333">arrowdown</span></div></div>');
+							$(this).prev().css('min-height', '90px');
+							$(this).prev().css('max-height', '90px');
+						} else { 
+							$(this).html('<d<div class="pull-right"><span class="icomatic" style="color: #333">arrowup</span></div></div>');
+							$(this).prev().css('min-height', stored_height + 'px');
+							$(this).prev().css('max-height', stored_height + 'px');
+						}
+
+					});
+					
+				});
+
+  			} 
+
+
+			function onBackKeyDown() {  
+			    history.go(-1);
+			    navigator.app.backHistory();  
+			}
+
+
+  		</script>
+	</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+	<head> 
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+  		<link rel="stylesheet" type="text/css" href="../webroot/css/style.css">
+  		<link rel="stylesheet" type="text/css" href="../webroot/css/bootstrap.css">
+  		<link rel="stylesheet" type="text/css" href="../webroot/css/topcoat-mobile-dark.css">
+  		<link rel="stylesheet" type="text/css" href="../webroot/css/icomatic/icomatic.css">
+	</head>
+
+	<body class="container" style="background: #FC2B5F;"> 
+		<div class="row">
+			<div class="nav-tab-bar fixed" style="height: 45px; color: #fff;"> 
+	 			<h4 class="home_button" style="margin: 0; padding: 12px 0; width: 85px;">
+	 				<span class="pull-left icomatic" style="font-size: 21px;">backlight</span> Fertiller
+	 			</h4>
+			</div>
+		</div>
+
+		<div class="nav-tab-bar-spacer" style="margin: 22px;"></div> 
+		<div class="nav-tab-bar-spacer" style="margin: 22px;"></div> 
+
+		<div class="aaa" id="aaa" style="color: #EDEDED;"> 
+
+			<center><h3 class="single_view_date" style="margin: 0px;"></h3></center>
+
+			<div style="margin: 22px;"></div> 
+
+			<input type="hidden" id="cycle_day_input" value="">
+			<center><h4 class="cycle_day_label"></h4></center>
+ 
+
+			<div class="row" style="position: fixed; right: 15px; left: 15px; top: 45%;">
+				<div style="padding: 0;" class="col-xs-2">
+					<span class="icomatic prev_button" style="font-size: 50px;">backlight</span>
+				</div>
+
+				<div class="col-xs-8">
+					<center><h4 class="prediction_label" style="margin: 0; font-size: 40px;">No data!</h4></center>
+				</div>
+
+				<div style="padding: 0;" class="col-xs-2">
+					<span class="icomatic next_button" style="font-size: 50px;">nextlight</span>
+				</div>
+			</div>
+
+ 
+			<div class="nav-tab-bar-spacer" style="margin: 22px;"></div> 
+
+
+			<div class="row" style="position: fixed; right: 15px; left: 15px; bottom: 10%;">
+				<div class="col-xs-4"><div>
+					<input type="hidden" id="mens_input" value="None">
+					<center><h4 style="margin: 0;" class="mens_label">No data</h4></center>
+					<center class="mens" style="padding: 10px 0;"><img src="../webroot/img/icons/mens_icon.png" height="50"></center>
+				</div></div>
+
+				<div class="col-xs-4"><div>
+					<input type="hidden" id="temp_input" value="0">
+					<center><h4 style="margin: 0;" class="temp_label">No data</h4></center>
+					<center class="temp" style="padding: 10px 0;"><img src="../webroot/img/icons/temp_icon.png" height="50"></center>
+				</div></div>
+
+				<div class="col-xs-4"><div>
+					<input type="hidden" id="mucus_input" value="None">
+					<center><h4 style="margin: 0;" class="mucus_label">No data</h4></center>
+					<center class="mucus" style="padding: 10px 0;"><img src="../webroot/img/icons/mucus_icon.png" height="50"></center>
+				</div></div>
+			</div>
+
+
+ 
+
+		</div> 
+
+  		<script type="text/javascript" src="../webroot/js/jquery.js"></script>
+  		<script type="text/javascript" src="../cordova-2.1.0.js"></script>  
+  		<script type="text/javascript" src="../webroot/js/bootbox.min.js"></script> 
+  		<script type="text/javascript" src="../webroot/js/bootstrap.min.js"></script> 
+  		<script type="text/javascript"> 
+	  		var months = [
+				'Jan', 
+				'Feb', 
+				'Mar', 
+				'Apr', 
+				'May', 
+				'Jun', 
+				'Jul', 
+				'Aug', 
+				'Sep', 
+				'Oct', 
+				'Nov', 
+				'Dec', 
+			];
+
+  			var single_view_date = window.localStorage.getItem('single_view_date'); 
+  			var date = new Date(single_view_date); 
+
+
+
+        	// Wait for device API libraries to load
+			document.addEventListener("deviceready", onDeviceReady, false);
+
+			// device APIs are available
+			function onDeviceReady() { 
+				$('h3.single_view_date').html(months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear());
+
+				$('.mens').on('touchend', function(e){
+		        	var html = '<label><input onClick="$(\'#mens_value\').val($(this).val());" type="radio" name="mens" value="heavy">Heavy</label><br>';
+					html += '<label><input onClick="$(\'#mens_value\').val($(this).val());" type="radio" name="mens" value="light">Light</label><br>';
+					html += '<label><input onClick="$(\'#mens_value\').val($(this).val());" type="radio" name="mens" value="spotting">Spotting'; 
+					html += '<input type="hidden" id="mens_value">';
+
+
+		            bootbox.alert(html, function() {
+		            	if ($('#mens_value').val()) {
+			                alert($('#mens_value').val()); 
+			            }
+		            });
+	        	});
+
+	        	$('.temp').on('touchend', function(e){
+	        		alert('asd');
+	        	});
+
+	        	$('.mucus').on('touchend', function(e){
+		        	var html = '<label><input onClick="$(\'#mucus_value\').val($(this).val());" type="radio" name="mucus" value="Dry">Dry</label><br>';
+					html += '<label><input onClick="$(\'#mucus_value\').val($(this).val());" type="radio" name="mucus" value="Sticky">Sticky/Tacky</label><br>';
+					html += '<label><input onClick="$(\'#mucus_value\').val($(this).val());" type="radio" name="mucus" value="Wet">Wet<br>'; 
+					html += '<label><input onClick="$(\'#mucus_value\').val($(this).val());" type="radio" name="mucus" value="Stretchy">Stretchy'; 
+					html += '<input type="hidden" id="mucus_value">';
+
+
+		            bootbox.alert(html, function() {
+		            	if ($('#mucus_value').val()) {
+			                alert($('#mucus_value').val()); 
+			            }
+		            });
+	        	});
+
+  				$('.home_button').on('touchstart', function(e){  
+					window.location.replace('fertility.html');
+				});  
+
+			    var db = window.openDatabase("xBirth", "1.0", "xBirth", 200000);
+			    db.transaction(queryCyclePredictionDB); 
+
+				document.addEventListener("backbutton", onBackKeyDown, false);
+  			}
+ 
+  			/*QUERY THE BC_METHODS DATABASE*/ 
+			function queryCyclePredictionDB(tx) {
+				var sql = "SELECT * FROM CYCLE_INFO_PREDICTION WHERE cycle_date = '"+single_view_date+"'";
+				tx.executeSql(sql, [], queryCyclePredictionDB_success);
+			}
+
+			function queryCyclePredictionDB_success(tx, results) {  
+			    var prediction = "Infertile!";  
+
+				$('#mens_input').val(results.rows.item(0).mens);
+				$('.mens_label').html(results.rows.item(0).mens);
+
+
+				$('#mucus_input').val(results.rows.item(0).mucus);
+				$('.mucus_label').html(results.rows.item(0).mucus);
+
+				$('#temp_input').val(results.rows.item(0).temperature);
+				$('.temp_label').html(results.rows.item(0).temperature + '&deg;F');
+
+				$('#cycle_day_input').val(results.rows.item(0).cycle_day);
+				$('.cycle_day_label').html('Day '+results.rows.item(0).cycle_day);
+
+				if (results.rows.item(0).is_fertile == "YES") {
+					prediction = "Fertile!";
+				}
+
+				$('.prediction_label').html(prediction); 
+ 
+				db = null;
+ 
+			}
+
+  			// Transaction error callback
+			function errorCB(err) {
+			    alert("Error processing SQL: "+err.code);
+			}
+
+
+			function onBackKeyDown() {  
+			    history.go(-1);
+			    navigator.app.backHistory();  
+			}
+			 
+
+  		</script>
+	</body>
+</html>

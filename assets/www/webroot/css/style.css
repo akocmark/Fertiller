@@ -1,0 +1,187 @@
+.content-main ul li {
+	text-indent: 0;
+}
+
+.nav-tab-bar { 
+	height: 70px;
+	background: #3498db;
+	color: #DBD9DE;
+	border-bottom: 1px solid #888;
+}
+.nav-tab-bar-item {
+	margin: 10px 0 10px 0;
+	padding: 10px 0 10px 0;
+	height: 50px;
+	display: block;
+	text-align: center; 
+}
+.nav-tab-bar-item.active { 
+	position: relative;
+	color: #fff;
+}
+.nav-tab-bar-item.active:after {
+	content: '';
+	background: #fff; 
+	display: block; 
+	height: 3px; 
+	width: 100%;
+	position: absolute; 
+	bottom: -9px; 
+	margin-right: -15px;
+	margin-left: -15px;
+}
+.nav-tab-bar-item-bordered {
+	border-right: 1px solid #DBD9DE;
+
+}
+.nav-tab-bar-spacer {
+	margin-top: 69px;
+	display: block;
+	height: 1px;
+}
+
+
+.footer {
+	height: 50px;
+	background: #3498db;
+	color: #fff;
+	border-top: 1px solid #888; 
+	width: 100%; 
+	bottom: 0;
+} 
+.footer-label { 
+}
+.footer-spacer { 
+	margin-bottom: 70px;
+}
+.fixed {
+	position: fixed;
+	right: 0;
+	left: 0;
+	z-index: 1030;
+} 
+
+
+
+/*PRETTY LIST*/
+.pretty-list { 
+}
+.pretty-list-item {
+	margin-top: 10px;
+	height: 60px;
+	border-radius: 2px;
+	background: #fff;
+	box-shadow: 0 2px 3px #888;
+}
+.pretty-list-item-on { 
+	background: rgba(92, 187, 250, .6); 
+}
+.on { 
+	background: rgba(92, 187, 250, .6); 
+}
+#pretty-list-icon {
+	padding: 10px 0 0 0;
+}
+.pretty-list-label {
+	padding-top: 5px;
+}
+.pretty-list-badge {
+	background: #3498db; 
+	color: #fff; 
+	height: 40px; 
+	width: 60px; 
+	position: absolute; 
+	right: 0; 
+	top: 0; 
+	text-align: center; 
+	padding-top: 5px; 
+	border-top-right-radius: 2px; 
+	box-shadow: -1px 2px 2px #888;
+} 
+
+
+
+/*CALENDAR*/ 
+table.calendar { 
+	width: 100%; 
+	border: 2px solid #3498db; 
+}
+td.calendar-day-head {
+	background: #3498db;
+	color: #fff;
+	text-align: center;
+	border-right: 1px solid #fff;
+}
+td.calendar-day-np { 
+	background:#eee; min-height:80px; 
+}
+td {
+	border: 1px solid #3498db;
+	width: 12%;
+	padding: 0;
+	margin: 0;
+}
+td.calendar-day {
+	color: #333; 
+	font-size: 12px;
+	height: 60px;
+	background: #fff;  
+}
+.day-number {
+	margin: 0 0 0 5px;  
+	float: left;
+}
+.calendar-day.egg {
+	color: #fff;
+	background: #E82323;
+}
+.calendar-day.egg .day-info {  
+	background: #fff;
+	color: #000;
+	width: 90%;
+	margin: 0 auto; 
+	font-size: 90%;
+	border-radius: 2px;  
+}  
+.day-info {
+	text-align: center;
+	color: #333;
+	height: 15px;
+}
+.day-info.mens {
+	background: #E82323;
+	color: #fff;
+	width: 90%;
+	margin: 0 auto; 
+	font-size: 90%;
+	border-radius: 2px; 
+} 
+
+.day-count { 
+	font-size: 90%; 
+	font-weight: bold;
+	float: right;
+	margin-right: 5px;
+	color: #3498db;
+}
+.mid-filler {
+	height: 20px;
+}
+.whole-filler {
+	height: 55px;
+}
+
+.swipe {
+  overflow: hidden;
+  visibility: hidden;
+  position: relative;
+}
+.swipe-wrap {
+  overflow: hidden;
+  position: relative;
+}
+.swipe-wrap > div {
+  float:left;
+  width: 100%;
+  position: relative; 
+}

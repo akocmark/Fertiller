@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head> 
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+  		<link rel="stylesheet" type="text/css" href="../webroot/css/style.css">
+  		<link rel="stylesheet" type="text/css" href="../webroot/css/bootstrap.css">
+  		<link rel="stylesheet" type="text/css" href="../webroot/css/topcoat-mobile-dark.css">
+  		<link rel="stylesheet" type="text/css" href="../webroot/css/icomatic/icomatic.css">
+	</head>
+
+	<body class="container">    
+		<div class="row">
+			<div class="nav-tab-bar fixed">
+				<div id="birth_controls_link" class="col-xs-4 nav-tab-bar-item nav-tab-bar-item-bordered active">
+					<div class="row">
+						<span class='icomatic' style='font-size: 22px;'>alert</span>
+					</div>
+					<span class="nav-tab-bar-label">Birth Controls</span> 
+				</div>
+
+				<div id="fertility_link" class="col-xs-4 nav-tab-bar-item nav-tab-bar-item-bordered">
+					<div class="row">
+						<span class='icomatic' style='font-size: 22px;'>like</span>
+					</div>
+					<span class="nav-tab-bar-label">Fertility</span>
+				</div>
+
+				<div id="about_link" class="col-xs-4 nav-tab-bar-item">
+					<div class="row">
+						<span class='icomatic' style='font-size: 22px;'>group</span>
+					</div>
+					<span class="nav-tab-bar-label">About</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="nav-tab-bar-spacer"></div> 
+
+		<div class="pretty-list" id="pretty-list">   
+			<!--MAIN CONTENT-->
+		</div>
+		
+		<div class="footer-spacer">&nbsp;</div>
+		<div class="footer fixed"> 
+			<div id="search-bar">
+	  			<div class="input-group" style="padding: 6px; 1px;">
+					<span class="input-group-btn">
+						<button class="cancel-button btn btn-default" type="button"><span class='icomatic' style='color: #3498db'>cancel</span></button>
+					</span>
+		      		<input id="filter_list" type="text" class="form-control" placeholder="Search">  
+	  			</div><!-- /.col-lg-6 -->
+	  		</div>
+
+  			<div class="footer-label">
+				<div style="margin: 14px 0 0 0; float: left;">
+					<span id="search-button" class='icomatic' style='color: #fff; font-size: 20px; padding: 14px 10px;'>search</span>
+				</div>
+				<div style="padding-top: 18px;"><div style="margin: 0 auto; width: 85px;">Re-electionists</div></div> 
+  			</div>
+		</div> 
+
+  		<script type="text/javascript" src="../webroot/js/jquery.js"></script>
+  		<script type="text/javascript" src="../cordova-2.1.0.js"></script> 
+  		<script type="text/javascript" src="../Model/BirthControls.model.js"></script>
+	</body>
+</html>
