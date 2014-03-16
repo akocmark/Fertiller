@@ -8,8 +8,8 @@
   		<link rel="stylesheet" type="text/css" href="../webroot/css/icomatic/icomatic.css">
 	</head>
 
-	<body class="container">    
-		<div class="row">
+	<body onload="onLoad()">    
+		<div class="container"><div class="row">
 			<div class="nav-tab-bar fixed">
 				<div id="birth_controls_link" class="col-xs-4 nav-tab-bar-item nav-tab-bar-item-bordered">
 					<div class="row">
@@ -51,7 +51,14 @@
   			<div class="footer-label" style="text-align: center; padding-top: 18px;"> 
 				 Re-electionists 
   			</div>
-		</div> 
+		</div></div>
+
+		<div class="menu" style="display: none; border: 1px solid #999; border-bottom: none; background: #fff; width: 84%; position: absolute; bottom: 0; left: 8%; right: 8%; z-index: 99999; border-top-left-radius: 3px; border-top-right-radius: 3px; box-shadow: 0 2px 5px #000;">
+			<li id="listview"><span class='icomatic' style='font-size: 19px;'>listview</span> List view</li>
+			<li id="statistics"><span class='icomatic' style='font-size: 19px;'>attachment</span> Statistics</li>
+			<li id="clear_record"><span class='icomatic' style='font-size: 19px;'>delete</span> Clear record</li>
+			<li id="settings" class="last"><span class='icomatic' style='font-size: 19px;'>settings</span> Settings</li>
+		</div>
 
   		<script type="text/javascript" src="../webroot/js/jquery.js"></script>
   		<script type="text/javascript" src="../cordova-2.1.0.js"></script> 

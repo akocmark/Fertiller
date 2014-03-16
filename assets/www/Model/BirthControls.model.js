@@ -1,3 +1,9 @@
+var is_touchmove = false; 
+var device_platform;
+var device_version;
+
+var touchevent_bug_version = ['3.0','3.1','3.2','4.0','4.0.1','4.0.2','4.0.3','4.0.4','4.4','4.4.1','4.4.2'];
+
 var source = [
 	'tubal_ligation',
 	'vasectomy',
@@ -102,7 +108,7 @@ risks['injectibles'] = '<p>After a certain time period, you have to repeat the i
 
 alias['iud'] = 'IUD';
 efficiency['iud'] = 99;
-img['iud'] = 'iud.jpeg';
+img['iud'] = 'iud.jpg';
 desc['iud'] = '<p>An Intrauterine Device (IUD) is a T-shaped, plastic device inserted into the uterus by a health care professional. There are two types of IUDs available:</p><ul><li>Copper, which can remain in place for 10 to 12 years.</li><li>Progesterone (natural female sex hormone); two types:</li><li>Mirena, lasts five to seven years.</li><li>Other types, replace every year.</li></ul><p>IUDs prevent pregnancy by inhibiting fertilization of the egg. Although not entirely known, it is believed that the IUDs affect the way the sperm and egg move and/or affect the lining of the uterus to prevent implantation of the egg.</p><p>IUDs are recommended for women in long-term mutually monogamous relationships, such that the risk of getting a sexually transmitted infections (STIs) is low.</p>';
 ins['iud'] = '<p>It is inserted into the uterine cavity by a health care provider, usually during menstruation when it is easier to insert. The string at the end of the IUD will hang down through the cervix a short distance into the vagina and should be checked periodically (especially after menstruation).</p><p>The IUD is inserted during an office visit. It is placed into the uterus through the cervix. The patient is placed on the table just like she is going to have a Pap smear. A speculum is inserted, like with a Pap smear.</p><p>The area that the brush touches when you have a pap smear is your cervix. The IUD is inserted in through the cervix up about 1 inch into your uterus. This is moderately painful, like bad cramping. </p><p>Patients are usually ask to take two Tylenol or ibuprofen before they come in for the procedure. After that, the string is cut and the speculum is removed.</p>';
 risks['iud'] = '<ul><li>For copper IUDs:<ul><li>Menstrual cramps may increase.</li><li>Bleeding may occur between periods.</li><li>Periods may be heavier and last longer. This may cause anemia.</li><li>Increases risk of serious infection – such as Pelvic Inflammatory Disease (PID) – and sterility.</li><li>IUD may fall out.</li></ul></li><li>Pregnancy while using the IUD, although rare, may be dangerous and lead to infections or ectopic pregnancies.</li></ul>';
@@ -138,9 +144,10 @@ function onDeviceReady() {
 	$('#search-bar').hide();
 
 	//Bind events
-	$('#search-button').on('touchstart', function(e){  
+	$('#search-button').on('touchstart', function(e){ 
 		$('.footer-label').hide();
-		$('#search-bar').show(); 
+		$('#search-bar').show();
+		$('#filter_list').focus(); 
 	}); 
 	$('.cancel-button').on('touchstart', function(){
 		$('.footer-label').show();
@@ -157,15 +164,21 @@ function onDeviceReady() {
 	$( "#filter_list" ).bind('input propertychange', search);
 
     var db = window.openDatabase("xBirth", "1.0", "xBirth", 200000);
-	//if(window.localStorage.getItem('runned')==null){ 
+	if(window.localStorage.getItem('runned')==null){ 
 	    db.transaction(populateDB, errorCB, successCB);
-		//window.localStorage.setItem('runned','1') 
-	//}else {
-    	//db.transaction(queryDB, errorCB);
-	//}
+		window.localStorage.setItem('runned','1') 
+	}else {
+    	db.transaction(queryDB, errorCB);
+	}
 
-	
+ 
+	device_platform = device.platform;  
+	device_version = device.version;   
+
 	document.addEventListener("backbutton", onBackKeyDown, false);
+	document.addEventListener("touchmove", function(){
+		$("#filter_list").blur();
+	});
 }
 // Populate the database
 function populateDB(tx) {
@@ -192,6 +205,18 @@ function populateDB(tx) {
 				"end_date DATE DEFAULT NULL," +
 				"duration INTEGER DEFAULT NULL," +  
 				"date_created DATE DEFAULT NULL)";	
+    tx.executeSql(sql);
+
+    //CREATE CYCLES_PREDICTION TABLE
+    tx.executeSql('DROP TABLE IF EXISTS STAT');
+	var sql = "CREATE TABLE IF NOT EXISTS STAT (" +
+				"id INTEGER PRIMARY KEY AUTOINCREMENT," +
+				"cycle_count INTEGER DEFAULT NULL," +
+				"is_regular VARCHAR(100) DEFAULT NULL," +
+				"cycle_ave INTEGER DEFAULT NULL," +
+				"period_ave INTEGER DEFAULT NULL," +
+				"current_period VARCHAR(100) DEFAULT NULL," + 
+				"next_period VARCHAR(100) DEFAULT NULL)";	
     tx.executeSql(sql);
     
     //CREATE CYCLE_INFO_PREDICTION TABLE
@@ -260,25 +285,46 @@ function querySuccess(tx, results) {
 
 	var links = document.getElementsByClassName('custom_link'); 
 	for(var k=0; k<links.length; k++){
-		links[k].addEventListener('touchstart', function(e){
+		links[k].addEventListener('touchstart', function(e){   
 			e.currentTarget.className = e.currentTarget.className + " pretty-list-item-on";
+
 		});
-		links[k].addEventListener('touchend', function(e){ 
-			e.currentTarget.className = e.currentTarget.className.replace( /(?:^|\s)pretty-list-item-on(?!\S)/ , '' );  
-			window.localStorage.setItem('var_name', alias[e.currentTarget.id]) 
-			window.localStorage.setItem('var_efficiency', efficiency[e.currentTarget.id])  
-			window.localStorage.setItem('var_img', img[e.currentTarget.id]) 
-			window.localStorage.setItem('var_desc', desc[e.currentTarget.id])  
-			window.localStorage.setItem('var_ins', ins[e.currentTarget.id])  
-			window.localStorage.setItem('var_risks', risks[e.currentTarget.id])  
-			window.location.replace('birth_control_single.html'); 
+
+		links[k].addEventListener('touchend', function(e){    
+
+			e.currentTarget.className = e.currentTarget.className.replace( /(?:^|\s)pretty-list-item-on(?!\S)/ , '' ); 
+
+			if (!inArray(device_version, touchevent_bug_version)) { 
+				if (!is_touchmove) {  
+					window.localStorage.setItem('var_name', alias[e.currentTarget.id]) 
+					window.localStorage.setItem('var_efficiency', efficiency[e.currentTarget.id])  
+					window.localStorage.setItem('var_img', img[e.currentTarget.id]) 
+					window.localStorage.setItem('var_desc', desc[e.currentTarget.id])  
+					window.localStorage.setItem('var_ins', ins[e.currentTarget.id])  
+					window.localStorage.setItem('var_risks', risks[e.currentTarget.id])  
+					window.location.replace('birth_control_single.html'); 
+				} 
+				is_touchmove = false; 
+			} else { 
+				window.localStorage.setItem('var_name', alias[e.currentTarget.id]) 
+				window.localStorage.setItem('var_efficiency', efficiency[e.currentTarget.id])  
+				window.localStorage.setItem('var_img', img[e.currentTarget.id]) 
+				window.localStorage.setItem('var_desc', desc[e.currentTarget.id])  
+				window.localStorage.setItem('var_ins', ins[e.currentTarget.id])  
+				window.localStorage.setItem('var_risks', risks[e.currentTarget.id])  
+				window.location.replace('birth_control_single.html'); 
+			} 
 		});
-		links[k].addEventListener('touchmove', function(e){ 
-			e.currentTarget.className = e.currentTarget.className.replace( /(?:^|\s)pretty-list-item-on(?!\S)/ , '' );
+
+		links[k].addEventListener('touchmove', function(e){   
+			if (!inArray(device_version, touchevent_bug_version)) { 
+				is_touchmove = true;
+			}
+			e.currentTarget.className = e.currentTarget.className.replace( /(?:^|\s)pretty-list-item-on(?!\S)/ , '' ); 
 		});
 	} 
 	db = null;
-}
+}  
 
 // Transaction error callback
 function errorCB(err) {
@@ -329,3 +375,13 @@ function queryMensDB_success(tx, results) {
 function onBackKeyDown() {   
 	navigator.app.exitApp();
 }
+
+
+function inArray(needle, haystack) {
+	var length = haystack.length;
+    for(var i = 0; i < length; i++) {
+        if(haystack[i] == needle) return true;
+    }
+    return false;
+}
+ 

@@ -69,129 +69,13 @@
 			</div>
 
 
- 
-
 		</div> 
+
 
   		<script type="text/javascript" src="../webroot/js/jquery.js"></script>
   		<script type="text/javascript" src="../cordova-2.1.0.js"></script>  
   		<script type="text/javascript" src="../webroot/js/bootbox.min.js"></script> 
-  		<script type="text/javascript" src="../webroot/js/bootstrap.min.js"></script> 
-  		<script type="text/javascript"> 
-	  		var months = [
-				'Jan', 
-				'Feb', 
-				'Mar', 
-				'Apr', 
-				'May', 
-				'Jun', 
-				'Jul', 
-				'Aug', 
-				'Sep', 
-				'Oct', 
-				'Nov', 
-				'Dec', 
-			];
-
-  			var single_view_date = window.localStorage.getItem('single_view_date'); 
-  			var date = new Date(single_view_date); 
-
-
-
-        	// Wait for device API libraries to load
-			document.addEventListener("deviceready", onDeviceReady, false);
-
-			// device APIs are available
-			function onDeviceReady() { 
-				$('h3.single_view_date').html(months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear());
-
-				$('.mens').on('touchend', function(e){
-		        	var html = '<label><input onClick="$(\'#mens_value\').val($(this).val());" type="radio" name="mens" value="heavy">Heavy</label><br>';
-					html += '<label><input onClick="$(\'#mens_value\').val($(this).val());" type="radio" name="mens" value="light">Light</label><br>';
-					html += '<label><input onClick="$(\'#mens_value\').val($(this).val());" type="radio" name="mens" value="spotting">Spotting'; 
-					html += '<input type="hidden" id="mens_value">';
-
-
-		            bootbox.alert(html, function() {
-		            	if ($('#mens_value').val()) {
-			                alert($('#mens_value').val()); 
-			            }
-		            });
-	        	});
-
-	        	$('.temp').on('touchend', function(e){
-	        		alert('asd');
-	        	});
-
-	        	$('.mucus').on('touchend', function(e){
-		        	var html = '<label><input onClick="$(\'#mucus_value\').val($(this).val());" type="radio" name="mucus" value="Dry">Dry</label><br>';
-					html += '<label><input onClick="$(\'#mucus_value\').val($(this).val());" type="radio" name="mucus" value="Sticky">Sticky/Tacky</label><br>';
-					html += '<label><input onClick="$(\'#mucus_value\').val($(this).val());" type="radio" name="mucus" value="Wet">Wet<br>'; 
-					html += '<label><input onClick="$(\'#mucus_value\').val($(this).val());" type="radio" name="mucus" value="Stretchy">Stretchy'; 
-					html += '<input type="hidden" id="mucus_value">';
-
-
-		            bootbox.alert(html, function() {
-		            	if ($('#mucus_value').val()) {
-			                alert($('#mucus_value').val()); 
-			            }
-		            });
-	        	});
-
-  				$('.home_button').on('touchstart', function(e){  
-					window.location.replace('fertility.html');
-				});  
-
-			    var db = window.openDatabase("xBirth", "1.0", "xBirth", 200000);
-			    db.transaction(queryCyclePredictionDB); 
-
-				document.addEventListener("backbutton", onBackKeyDown, false);
-  			}
- 
-  			/*QUERY THE BC_METHODS DATABASE*/ 
-			function queryCyclePredictionDB(tx) {
-				var sql = "SELECT * FROM CYCLE_INFO_PREDICTION WHERE cycle_date = '"+single_view_date+"'";
-				tx.executeSql(sql, [], queryCyclePredictionDB_success);
-			}
-
-			function queryCyclePredictionDB_success(tx, results) {  
-			    var prediction = "Infertile!";  
-
-				$('#mens_input').val(results.rows.item(0).mens);
-				$('.mens_label').html(results.rows.item(0).mens);
-
-
-				$('#mucus_input').val(results.rows.item(0).mucus);
-				$('.mucus_label').html(results.rows.item(0).mucus);
-
-				$('#temp_input').val(results.rows.item(0).temperature);
-				$('.temp_label').html(results.rows.item(0).temperature + '&deg;F');
-
-				$('#cycle_day_input').val(results.rows.item(0).cycle_day);
-				$('.cycle_day_label').html('Day '+results.rows.item(0).cycle_day);
-
-				if (results.rows.item(0).is_fertile == "YES") {
-					prediction = "Fertile!";
-				}
-
-				$('.prediction_label').html(prediction); 
- 
-				db = null;
- 
-			}
-
-  			// Transaction error callback
-			function errorCB(err) {
-			    alert("Error processing SQL: "+err.code);
-			}
-
-
-			function onBackKeyDown() {  
-			    history.go(-1);
-			    navigator.app.backHistory();  
-			}
-			 
-
-  		</script>
+  		<script type="text/javascript" src="../webroot/js/bootstrap.min.js"></script>  
+  		<script type="text/javascript" src="../Model/FertilitySingle.model.js"></script>
 	</body>
 </html>

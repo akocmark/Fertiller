@@ -13,8 +13,11 @@ var this_month_daycount;
 var d1;
 var d2; 
 
-// Wait for device API libraries to load
-document.addEventListener("deviceready", onDeviceReady, false);
+function onLoad() {
+	$('.menu').hide();
+	// Wait for device API libraries to load
+	document.addEventListener("deviceready", onDeviceReady, false);
+}
 
 function onDeviceReady() { 
 	if(window.localStorage.getItem('url_year')==null || window.localStorage.getItem('url_month')==null){
@@ -74,15 +77,28 @@ function onDeviceReady() {
     db.transaction(getFerileDays, errorCB);
 
 
+	$('#listview').on('touchstart', function(e){  
+		window.location.replace('fertility_listview.html');
+	}); 
+	$('#statistics').on('touchstart', function(e){   
+	}); 
+	$('#clear_record').on('touchstart', function(e){   
+	});
 
 	$('#birth_controls_link').on('touchstart', function(e){
 		window.location.replace('birth_controls.html');
 	});
 
+ 
 
 
+    // Register the event listener
+	document.addEventListener("backbutton", onBackKeyDown, false); 
+    document.addEventListener("menubutton", onMenuKeyDown, false);
 
-	document.addEventListener("backbutton", onBackKeyDown, false);
+    document.addEventListener("touchstart", function(){
+		$(".menu").hide();
+	});
 
 }
 
@@ -292,4 +308,8 @@ function onBackKeyDown() {
 	window.localStorage.removeItem("url_year");
 	window.localStorage.removeItem("url_month");
 	navigator.app.exitApp();
+}
+
+function onMenuKeyDown() {  
+	$('.menu').slideToggle(100); 
 }

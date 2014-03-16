@@ -185,3 +185,20 @@ td.calendar-day {
   width: 100%;
   position: relative; 
 }
+
+#filter_list:focus {
+	outline: none;
+}
+
+div.menu li {
+	margin: 0;
+	padding: 10px; 
+	list-style: none;
+	border-bottom: 1px solid #888;
+	font-size: 17px;
+	color: #223;
+} 
+
+div.menu li.last {
+	border-bottom: none;
+}
